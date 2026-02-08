@@ -1,0 +1,38 @@
+/**
+ * Navigation Components - Minimalist
+ * Subtle navigation items with clean states
+ */
+
+.nav-item {
+    padding: var(--space-md) var(--space-xl);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    border-left: 2px solid transparent;
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-medium);
+}
+
+.nav-item:hover {
+    background: rgba(59, 130, 246, 0.08);
+    border-left-color: var(--color-accent-primary);
+    color: var(--color-text-primary);
+}
+
+.nav-item.active {
+    background: rgba(59, 130, 246, 0.12);
+    border-left-color: var(--color-accent-primary);
+    color: var(--color-accent-primary);
+    font-weight: var(--font-weight-semibold);
+}
+
+.nav-item i {
+    font-size: var(--font-size-2xl);
+    flex-shrink: 0;
+}
+
+.nav-item span {
+    flex: 1;
+}
