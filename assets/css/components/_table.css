@@ -1,0 +1,144 @@
+/**
+ * RFM Table Styles
+ * Professional table styling for RFM segment reference
+ */
+
+.rfm-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: var(--space-md);
+    font-size: 14px;
+    background: var(--card-bg);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.rfm-table thead {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(16, 185, 129, 0.15));
+}
+
+.rfm-table th {
+    padding: var(--space-md) var(--space-sm);
+    text-align: left;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-text-primary);
+    border-bottom: 2px solid var(--color-border-primary);
+}
+
+.rfm-table tbody tr {
+    transition: all var(--transition-fast);
+    border-bottom: 1px solid var(--color-border-primary);
+}
+
+.rfm-table tbody tr:hover {
+    background: rgba(59, 130, 246, 0.05);
+    transform: translateX(4px);
+}
+
+.rfm-table td {
+    padding: var(--space-sm) var(--space-sm);
+    color: var(--color-text-secondary);
+    vertical-align: middle;
+}
+
+.rfm-table td:first-child {
+    color: var(--color-text-primary);
+    font-weight: 600;
+}
+
+.rfm-table td:nth-child(2),
+.rfm-table td:nth-child(3) {
+    text-align: center;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.rfm-table tfoot {
+    background: rgba(59, 130, 246, 0.1);
+    border-top: 2px solid var(--color-accent-primary);
+}
+
+.rfm-table tfoot td {
+    padding: var(--space-md) var(--space-sm);
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+/* RFM Score Badge */
+.rfm-score {
+    display: inline-block;
+    padding: 4px 10px;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: var(--radius-sm);
+    font-size: 12px;
+    font-weight: 600;
+    font-family: 'Courier New', monospace;
+    color: var(--color-accent-primary);
+    letter-spacing: 1px;
+}
+
+/* Group Badges */
+.badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge-success {
+    background: rgba(46, 204, 113, 0.15);
+    color: #2ECC71;
+    border: 1px solid rgba(46, 204, 113, 0.3);
+}
+
+.badge-warning {
+    background: rgba(243, 156, 18, 0.15);
+    color: #F39C12;
+    border: 1px solid rgba(243, 156, 18, 0.3);
+}
+
+.badge-attention {
+    background: rgba(230, 126, 34, 0.15);
+    color: #E67E22;
+    border: 1px solid rgba(230, 126, 34, 0.3);
+}
+
+.badge-critical {
+    background: rgba(231, 76, 60, 0.15);
+    color: #E74C3C;
+    border: 1px solid rgba(231, 76, 60, 0.3);
+}
+
+/* Responsive Table */
+@media (max-width: 768px) {
+    .rfm-table {
+        font-size: 12px;
+    }
+    
+    .rfm-table th,
+    .rfm-table td {
+        padding: var(--space-xs) var(--space-xxs);
+    }
+    
+    .rfm-table th {
+        font-size: 11px;
+    }
+    
+    .rfm-score {
+        font-size: 10px;
+        padding: 2px 6px;
+    }
+    
+    .badge {
+        font-size: 9px;
+        padding: 2px 8px;
+    }
+}

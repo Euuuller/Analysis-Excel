@@ -23,6 +23,7 @@
 /* ========== COMPONENTS LAYER ========== */
 @import url('./components/_cards.css');
 @import url('./components/_navigation.css');
+@import url('./components/_table.css');
 
 /* ========== PAGES LAYER ========== */
 @import url('./pages/_business.css');
