@@ -20,35 +20,86 @@ export class ChartService {
             series: data,
             chart: {
                 ...DEFAULT_CHART_CONFIG.chart,
-                height: CHART_HEIGHTS.large,
-                type: 'heatmap'
+                height: 600,
+                type: 'heatmap',
+                toolbar: {
+                    show: true,
+                    tools: {
+                        download: true,
+                        selection: false,
+                        zoom: true,
+                        zoomin: true,
+                        zoomout: true,
+                        pan: false,
+                        reset: true
+                    }
+                }
             },
             ...HEATMAP_CONFIG,
             xaxis: {
                 ...AXIS_CONFIG.xaxis,
                 type: 'category',
-                categories: categories
-            },
-            yaxis: AXIS_CONFIG.yaxis,
-            dataLabels: {
-                ...HEATMAP_CONFIG.dataLabels,
-                formatter: function(val) {
-                    return val + '%';
+                categories: categories,
+                labels: {
+                    ...AXIS_CONFIG.xaxis.labels,
+                    rotate: 0,
+                    style: {
+                        colors: '#a1a1a1',
+                        fontSize: '13px',
+                        fontWeight: 600
+                    }
                 }
+            },
+            yaxis: {
+                ...AXIS_CONFIG.yaxis,
+                labels: {
+                    ...AXIS_CONFIG.yaxis.labels,
+                    style: {
+                        colors: '#a1a1a1',
+                        fontSize: '13px',
+                        fontWeight: 600
+                    }
+                }
+            },
+            dataLabels: {
+                ...HEATMAP_CONFIG.dataLabels
             },
             tooltip: {
                 ...DEFAULT_CHART_CONFIG.tooltip,
-                y: {
-                    formatter: function(val) {
-                        return val + '% dos clientes retornaram';
-                    }
+                custom: function({ series, seriesIndex, dataPointIndex, w }) {
+                    const value = series[seriesIndex][dataPointIndex];
+                    const cohort = w.globals.labels[seriesIndex];
+                    const month = w.globals.categoryLabels[dataPointIndex];
+                    
+                    return `
+                        <div style="padding: 12px; background: #1a1a1a; border: 1px solid #333; border-radius: 8px;">
+                            <div style="font-weight: 700; color: #60a5fa; margin-bottom: 6px;">
+                                Cohort ${cohort}
+                            </div>
+                            <div style="color: #fafafa; margin-bottom: 4px;">
+                                <strong>Mês:</strong> ${month}
+                            </div>
+                            <div style="color: #34d399; font-size: 16px; font-weight: 700;">
+                                ${value}% retenção
+                            </div>
+                        </div>
+                    `;
                 }
             },
             legend: {
                 show: true,
-                position: 'bottom',
+                position: 'right',
+                offsetY: 0,
                 labels: {
-                    colors: '#cbd5e1'
+                    colors: '#a1a1a1',
+                    useSeriesColors: false
+                },
+                fontSize: '12px',
+                fontWeight: 600,
+                markers: {
+                    width: 16,
+                    height: 16,
+                    radius: 4
                 }
             }
         };

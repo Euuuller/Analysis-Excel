@@ -36,19 +36,36 @@ export const DEFAULT_CHART_CONFIG = {
 export const HEATMAP_CONFIG = {
     plotOptions: {
         heatmap: {
-            shadeIntensity: 0.3,
-            radius: 0,
+            shadeIntensity: 0.5,
+            radius: 4,
             useFillColorAsStroke: false,
             colorScale: {
                 ranges: [
-                    { from: 0, to: 0, color: 'rgba(239, 68, 68, 0.15)', name: '0%' },
-                    { from: 1, to: 3, color: 'rgba(239, 68, 68, 0.15)', name: '1-3%' },
-                    { from: 4, to: 7, color: 'rgba(245, 158, 11, 0.15)', name: '4-7%' },
-                    { from: 8, to: 11, color: 'rgba(251, 191, 36, 0.15)', name: '8-11%' },
-                    { from: 12, to: 15, color: 'rgba(52, 211, 153, 0.15)', name: '12-15%' },
-                    { from: 16, to: 19, color: 'rgba(16, 185, 129, 0.2)', name: '16-19%' },
-                    { from: 20, to: 24, color: 'rgba(16, 185, 129, 0.25)', name: '20-24%' },
-                    { from: 25, to: 100, color: 'rgba(16, 185, 129, 0.3)', name: '25-100%' }
+                    // Critical (0% - Red intense)
+                    { from: 0, to: 0, color: '#dc2626', name: '0%' },
+                    
+                    // Very Low (1-5% - Red to Orange)
+                    { from: 1, to: 2, color: '#ef4444', name: '1-2%' },
+                    { from: 3, to: 5, color: '#f97316', name: '3-5%' },
+                    
+                    // Low (6-10% - Orange to Yellow)
+                    { from: 6, to: 8, color: '#fb923c', name: '6-8%' },
+                    { from: 9, to: 10, color: '#fbbf24', name: '9-10%' },
+                    
+                    // Medium-Low (11-15% - Yellow to Light Green)
+                    { from: 11, to: 13, color: '#facc15', name: '11-13%' },
+                    { from: 14, to: 15, color: '#a3e635', name: '14-15%' },
+                    
+                    // Medium (16-20% - Light Green to Green)
+                    { from: 16, to: 18, color: '#84cc16', name: '16-18%' },
+                    { from: 19, to: 20, color: '#65a30d', name: '19-20%' },
+                    
+                    // Good (21-25% - Green)
+                    { from: 21, to: 23, color: '#16a34a', name: '21-23%' },
+                    { from: 24, to: 25, color: '#15803d', name: '24-25%' },
+                    
+                    // Excellent (26-100% - Dark Green)
+                    { from: 26, to: 100, color: '#166534', name: '26-100%' }
                 ]
             }
         }
@@ -56,10 +73,18 @@ export const HEATMAP_CONFIG = {
     dataLabels: {
         enabled: true,
         style: {
-            colors: ['#fafafa'],
-            fontSize: '11px',
-            fontWeight: 600
+            colors: ['#ffffff'],
+            fontSize: '14px',
+            fontWeight: 700,
+            fontFamily: 'Inter, -apple-system, sans-serif'
+        },
+        formatter: function(val) {
+            return val + '%';
         }
+    },
+    stroke: {
+        width: 2,
+        colors: ['#1a1a1a']
     }
 };
 
@@ -68,7 +93,8 @@ export const AXIS_CONFIG = {
         labels: {
             style: {
                 colors: '#a1a1a1',
-                fontSize: '12px'
+                fontSize: '13px',
+                fontWeight: 600
             }
         }
     },
@@ -76,7 +102,8 @@ export const AXIS_CONFIG = {
         labels: {
             style: {
                 colors: '#a1a1a1',
-                fontSize: '12px'
+                fontSize: '13px',
+                fontWeight: 600
             }
         }
     }
