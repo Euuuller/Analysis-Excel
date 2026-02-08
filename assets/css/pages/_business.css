@@ -1,0 +1,61 @@
+/**
+ * Business Page Styles - Minimalist
+ * Clean sections with subtle accents
+ */
+
+.business-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.business-section {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-2xl);
+    margin-bottom: var(--space-xl);
+}
+
+.business-section h3 {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-md);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.business-section p {
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-md);
+}
+
+.business-section ul li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.business-section ul li:last-child {
+    border-bottom: none;
+}
+
+.highlight {
+    color: var(--color-accent-primary);
+    font-weight: var(--font-weight-semibold);
+}
+
+.metric-highlight {
+    background: rgba(59, 130, 246, 0.08);
+    border-left: 3px solid var(--color-accent-primary);
+    padding: var(--space-lg);
+    border-radius: var(--radius-md);
+    margin: var(--space-lg) 0;
+}
+
+.metric-highlight strong {
+    color: var(--color-accent-primary);
+    font-size: var(--font-size-lg);
+}
