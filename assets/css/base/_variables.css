@@ -1,0 +1,123 @@
+/**
+ * CSS Variables - Professional Minimalist Design System
+ * Inspired by Vercel, Linear, and shadcn/ui
+ */
+
+:root {
+    /* ========== Background Colors ========== */
+    --color-bg-primary: #0a0a0a;           /* Main background - soft black */
+    --color-bg-secondary: #111111;         /* Cards and containers */
+    --color-bg-tertiary: #1a1a1a;          /* Hover states */
+    
+    /* ========== Border Colors ========== */
+    --color-border-primary: #262626;       /* Primary borders */
+    --color-border-secondary: #333333;     /* Secondary borders */
+    
+    /* ========== Text Colors ========== */
+    --color-text-primary: #fafafa;         /* Primary text */
+    --color-text-secondary: #a1a1a1;       /* Secondary text/labels */
+    --color-text-muted: #737373;           /* Muted/disabled text */
+    
+    /* ========== Accent Colors (Minimalist) ========== */
+    --color-accent-primary: #3b82f6;       /* Blue - primary actions */
+    --color-accent-secondary: #10b981;     /* Green mint - success */
+    --color-accent-warning: #f59e0b;       /* Amber - warning */
+    --color-accent-danger: #ef4444;        /* Red - critical */
+    --color-accent-info: #3b82f6;          /* Blue - info */
+    
+    /* ========== Chart Colors (Soft Tones) ========== */
+    --color-chart-1: #60a5fa;              /* Light blue */
+    --color-chart-2: #34d399;              /* Mint green */
+    --color-chart-3: #a78bfa;              /* Soft purple */
+    --color-chart-4: #fbbf24;              /* Soft yellow */
+    --color-chart-5: #f472b6;              /* Soft pink */
+    
+    /* ========== Spacing Scale (4px Base System) ========== */
+    --space-1: 0.25rem;       /* 4px */
+    --space-2: 0.5rem;        /* 8px */
+    --space-3: 0.75rem;       /* 12px */
+    --space-4: 1rem;          /* 16px */
+    --space-5: 1.25rem;       /* 20px */
+    --space-6: 1.5rem;        /* 24px */
+    --space-8: 2rem;          /* 32px */
+    --space-10: 2.5rem;       /* 40px */
+    --space-12: 3rem;         /* 48px */
+    --space-16: 4rem;         /* 64px */
+    
+    /* Legacy aliases for compatibility */
+    --space-xs: var(--space-1);
+    --space-sm: var(--space-2);
+    --space-md: var(--space-4);
+    --space-lg: var(--space-6);
+    --space-xl: var(--space-8);
+    --space-2xl: var(--space-10);
+    --space-3xl: var(--space-12);
+    
+    /* ========== Typography ========== */
+    --font-family-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-family-mono: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, monospace;
+    --font-family-primary: var(--font-family-sans);
+    
+    /* Font Sizes */
+    --font-size-xs: 0.75rem;   /* 12px */
+    --font-size-sm: 0.875rem;  /* 14px */
+    --font-size-base: 1rem;    /* 16px */
+    --font-size-lg: 1.125rem;  /* 18px */
+    --font-size-xl: 1.25rem;   /* 20px */
+    --font-size-2xl: 1.5rem;   /* 24px */
+    --font-size-3xl: 2rem;     /* 32px */
+    
+    /* Font Weights */
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-extrabold: 800;
+    
+    /* Line Heights */
+    --line-height-tight: 1.2;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.8;
+    
+    /* ========== Border Radius ========== */
+    --radius-sm: 0.25rem;     /* 4px */
+    --radius-md: 0.5rem;      /* 8px */
+    --radius-lg: 1rem;        /* 16px */
+    --radius-xl: 1.5rem;      /* 24px */
+    --radius-full: 9999px;
+    
+    /* ========== Transitions ========== */
+    --transition-fast: 0.15s ease-in-out;
+    --transition-normal: 0.3s ease-in-out;
+    --transition-slow: 0.5s ease-in-out;
+    
+    /* ========== Shadows (Subtle) ========== */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+    --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+    --shadow-glow-primary: 0 0 20px rgba(59, 130, 246, 0.2);
+    --shadow-glow-success: 0 0 20px rgba(16, 185, 129, 0.2);
+    
+    /* ========== Card & Container Styles ========== */
+    --card-bg: var(--color-bg-secondary);
+    --card-border: var(--color-border-primary);
+    --card-hover-border: var(--color-border-secondary);
+    
+    /* ========== Z-Index Scale ========== */
+    --z-index-dropdown: 1000;
+    --z-index-sticky: 1020;
+    --z-index-fixed: 1030;
+    --z-index-modal-backdrop: 1040;
+    --z-index-modal: 1050;
+    --z-index-popover: 1060;
+    --z-index-tooltip: 1070;
+    
+    /* ========== Layout ========== */
+    --sidebar-width: 280px;
+    --sidebar-collapsed-width: 80px;
+    --header-height: 64px;
+    --container-max-width: 1400px;
+}
