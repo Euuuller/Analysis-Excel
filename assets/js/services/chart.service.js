@@ -111,54 +111,165 @@ export class ChartService {
     }
     
     /**
-     * Render a treemap chart
+     * Render a treemap chart with strategic RFM colors
      */
     renderTreemap(elementId, data) {
+        // Extract colors from data
+        const colors = data.map(segment => segment.color || '#60a5fa');
+        const total = data.reduce((sum, seg) => sum + seg.y, 0);
+        
         const options = {
             ...DEFAULT_CHART_CONFIG,
-            series: [{ data }],
+            series: [{
+                data: data.map(seg => ({
+                    x: seg.x,
+                    y: seg.y,
+                    fillColor: seg.color,
+                    meta: {
+                        group: seg.group,
+                        rfm: seg.rfm,
+                        action: seg.action,
+                        description: seg.description,
+                        percentage: ((seg.y / total) * 100).toFixed(2)
+                    }
+                }))
+            }],
             chart: {
                 ...DEFAULT_CHART_CONFIG.chart,
-                height: CHART_HEIGHTS.large,
-                type: 'treemap'
+                height: 650,
+                type: 'treemap',
+                toolbar: {
+                    show: true,
+                    tools: {
+                        download: true,
+                        selection: false,
+                        zoom: false,
+                        zoomin: false,
+                        zoomout: false,
+                        pan: false,
+                        reset: false
+                    }
+                },
+                animations: {
+                    enabled: true,
+                    easing: 'easeinout',
+                    speed: 800,
+                    animateGradually: {
+                        enabled: true,
+                        delay: 100
+                    },
+                    dynamicAnimation: {
+                        enabled: true,
+                        speed: 400
+                    }
+                }
             },
-            colors: ['#60a5fa', '#34d399', '#a78bfa', '#fbbf24', '#f472b6'],
             plotOptions: {
                 treemap: {
                     distributed: true,
                     enableShades: false,
-                    colorScale: {
-                        ranges: [
-                            { from: 0, to: 20, color: 'rgba(167, 139, 250, 0.12)' },
-                            { from: 21, to: 50, color: 'rgba(59, 130, 246, 0.12)' },
-                            { from: 51, to: 100, color: 'rgba(16, 185, 129, 0.12)' },
-                            { from: 101, to: 200, color: 'rgba(251, 191, 36, 0.12)' },
-                            { from: 201, to: 300, color: 'rgba(239, 68, 68, 0.12)' }
-                        ]
+                    borderRadius: 6,
+                    dataLabels: {
+                        format: 'truncate'
                     }
                 }
             },
             dataLabels: {
                 enabled: true,
                 style: {
-                    fontSize: '13px',
-                    fontWeight: 600,
-                    colors: ['#fafafa']
+                    fontSize: '15px',
+                    fontWeight: 700,
+                    fontFamily: 'Inter, -apple-system, sans-serif',
+                    colors: ['#ffffff']
                 },
                 formatter: function(text, op) {
-                    return [text, op.value + ' clientes'];
-                }
+                    const percentage = op.w.config.series[0].data[op.dataPointIndex].meta.percentage;
+                    return [text, `${percentage}%`];
+                },
+                offsetY: -4
             },
             tooltip: {
                 ...DEFAULT_CHART_CONFIG.tooltip,
-                y: {
-                    formatter: function(val) {
-                        return val + ' clientes neste segmento';
-                    }
+                custom: function({ seriesIndex, dataPointIndex, w }) {
+                    const point = w.config.series[seriesIndex].data[dataPointIndex];
+                    const meta = point.meta;
+                    const value = point.y;
+                    
+                    // Group badges
+                    const groupBadges = {
+                        'ATIVOS_VALIOSOS': '<span style="background: #2ECC71; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600;">✓ ATIVOS VALIOSOS</span>',
+                        'POTENCIAL_CRESCIMENTO': '<span style="background: #F39C12; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600;">⚡ POTENCIAL</span>',
+                        'ATENCAO_NECESSARIA': '<span style="background: #E67E22; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600;">⚠️ ATENÇÃO</span>',
+                        'CRITICOS': '<span style="background: #E74C3C; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600;">🚨 CRÍTICO</span>'
+                    };
+                    
+                    return `
+                        <div style="padding: 16px; background: linear-gradient(135deg, #1a1a1a 0%, #262626 100%); border: 2px solid ${point.fillColor}; border-radius: 12px; min-width: 280px; box-shadow: 0 8px 24px rgba(0,0,0,0.4);">
+                            <div style="font-size: 18px; font-weight: 700; color: ${point.fillColor}; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                                ${point.x}
+                            </div>
+                            
+                            <div style="margin-bottom: 12px;">
+                                ${groupBadges[meta.group]}
+                            </div>
+                            
+                            <div style="color: #a1a1a1; font-size: 13px; line-height: 1.6; margin-bottom: 12px; border-left: 3px solid ${point.fillColor}; padding-left: 10px;">
+                                ${meta.description}
+                            </div>
+                            
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+                                <div style="background: rgba(255,255,255,0.05); padding: 8px; border-radius: 6px;">
+                                    <div style="color: #737373; font-size: 11px; text-transform: uppercase; margin-bottom: 4px;">Clientes</div>
+                                    <div style="color: #fafafa; font-size: 20px; font-weight: 700;">${value}</div>
+                                </div>
+                                <div style="background: rgba(255,255,255,0.05); padding: 8px; border-radius: 6px;">
+                                    <div style="color: #737373; font-size: 11px; text-transform: uppercase; margin-bottom: 4px;">Percentual</div>
+                                    <div style="color: ${point.fillColor}; font-size: 20px; font-weight: 700;">${meta.percentage}%</div>
+                                </div>
+                            </div>
+                            
+                            <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 6px; margin-bottom: 12px;">
+                                <div style="color: #737373; font-size: 11px; text-transform: uppercase; margin-bottom: 6px;">Score RFM</div>
+                                <div style="display: flex; gap: 12px; justify-content: space-around;">
+                                    <div style="text-align: center;">
+                                        <div style="color: #60a5fa; font-size: 10px; margin-bottom: 2px;">Recência</div>
+                                        <div style="color: #fafafa; font-size: 18px; font-weight: 700;">${meta.rfm.r}</div>
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <div style="color: #34d399; font-size: 10px; margin-bottom: 2px;">Frequência</div>
+                                        <div style="color: #fafafa; font-size: 18px; font-weight: 700;">${meta.rfm.f}</div>
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <div style="color: #fbbf24; font-size: 10px; margin-bottom: 2px;">Monetário</div>
+                                        <div style="color: #fafafa; font-size: 18px; font-weight: 700;">${meta.rfm.m}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div style="background: linear-gradient(135deg, ${point.fillColor}22, ${point.fillColor}11); padding: 10px; border-radius: 6px; border-left: 3px solid ${point.fillColor};">
+                                <div style="color: #737373; font-size: 11px; text-transform: uppercase; margin-bottom: 4px;">💡 Ação Recomendada</div>
+                                <div style="color: #fafafa; font-size: 13px; font-weight: 600;">${meta.action}</div>
+                            </div>
+                        </div>
+                    `;
                 }
             },
             legend: {
                 show: false
+            },
+            states: {
+                hover: {
+                    filter: {
+                        type: 'darken',
+                        value: 0.15
+                    }
+                },
+                active: {
+                    filter: {
+                        type: 'darken',
+                        value: 0.25
+                    }
+                }
             }
         };
 
