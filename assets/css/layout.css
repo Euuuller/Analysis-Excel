@@ -1,0 +1,105 @@
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 280px;
+    height: 100vh;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    border-right: 1px solid rgba(6, 182, 212, 0.2);
+    padding: var(--spacing-xl) 0;
+    z-index: 1000;
+    transition: var(--transition-normal);
+}
+
+.logo {
+    padding: 0 var(--spacing-xl) var(--spacing-xl);
+    border-bottom: 1px solid var(--glass-border);
+    margin-bottom: var(--spacing-xl);
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.logo p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: var(--spacing-xs);
+}
+
+.nav-item {
+    padding: var(--spacing-md) var(--spacing-xl);
+    cursor: pointer;
+    transition: var(--transition-normal);
+    border-left: 3px solid transparent;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    color: var(--text-secondary);
+}
+
+.nav-item:hover {
+    background: rgba(6, 182, 212, 0.1);
+    border-left-color: var(--accent-cyan);
+    color: var(--text-primary);
+}
+
+.nav-item.active {
+    background: rgba(6, 182, 212, 0.15);
+    border-left-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+    font-weight: 600;
+}
+
+.nav-item i {
+    font-size: 1.5rem;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 280px;
+    padding: var(--spacing-xl);
+    min-height: 100vh;
+}
+
+/* Page Container */
+.page {
+    display: none;
+    animation: fadeIn var(--transition-slow);
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Grid Layouts */
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}

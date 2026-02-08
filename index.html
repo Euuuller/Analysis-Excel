@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dashboard de Análise de E-commerce - Cohort, RFM e Análise Descritiva">
+    <meta name="author" content="Analytics Team">
+    <title>Dashboard Analytics - E-commerce</title>
+    
+    <!-- ApexCharts CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Main Stylesheet (imports all CSS modules) -->
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="logo">
+            <h1>📊 Analytics</h1>
+            <p>E-commerce Dashboard</p>
+        </div>
+        <nav>
+            <div class="nav-item active" data-page="problema">
+                <i class="ph ph-lightbulb"></i>
+                <span>O Problema</span>
+            </div>
+            <div class="nav-item" data-page="cohort">
+                <i class="ph ph-chart-line"></i>
+                <span>Cohort</span>
+            </div>
+            <div class="nav-item" data-page="rfm">
+                <i class="ph ph-users-three"></i>
+                <span>Segmentação RFM</span>
+            </div>
+            <div class="nav-item" data-page="descritiva">
+                <i class="ph ph-chart-bar"></i>
+                <span>Descritiva</span>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Page 1: Business Problem -->
+        <div id="problema" class="page active">
+            <div class="page-header">
+                <h2>🎯 O Problema de Negócio</h2>
+                <p>Entendendo os desafios e oportunidades</p>
+            </div>
+            
+            <div class="business-content">
+                <div class="business-section">
+                    <h3><i class="ph ph-warning"></i> Contexto Atual</h3>
+                    <p>
+                        Nossa empresa de e-commerce enfrenta um desafio crítico: 
+                        <span class="highlight">a taxa de retenção de clientes está abaixo do esperado</span>, 
+                        impactando diretamente a receita recorrente e o LTV (Lifetime Value) dos clientes.
+                    </p>
+                    <p>
+                        Análises preliminares indicam que <span class="highlight">mais de 70% dos clientes 
+                        não retornam após a primeira compra</span>, e não temos clareza sobre quais 
+                        segmentos de clientes são mais valiosos ou quais produtos geram maior fidelização.
+                    </p>
+                </div>
+
+                <div class="business-section">
+                    <h3><i class="ph ph-target"></i> Objetivos Estratégicos</h3>
+                    <div class="metric-highlight">
+                        <p><strong>1. Melhorar a Retenção de Clientes</strong></p>
+                        <p>Identificar em qual período os clientes mais abandonam e criar estratégias 
+                        de reengajamento personalizadas.</p>
+                    </div>
+                    <div class="metric-highlight">
+                        <p><strong>2. Segmentar Clientes Estrategicamente</strong></p>
+                        <p>Utilizar análise RFM (Recência, Frequência, Monetização) para classificar 
+                        clientes e direcionar ações de marketing de forma eficiente.</p>
+                    </div>
+                    <div class="metric-highlight">
+                        <p><strong>3. Otimizar o Mix de Produtos</strong></p>
+                        <p>Entender quais produtos e categorias geram mais valor e ajustar o 
+                        estoque e campanhas de acordo.</p>
+                    </div>
+                </div>
+
+                <div class="business-section">
+                    <h3><i class="ph ph-chart-line-up"></i> Impacto Esperado</h3>
+                    <p>
+                        Com as análises de <span class="highlight">Cohort, RFM e Descritiva</span>, 
+                        esperamos:
+                    </p>
+                    <ul>
+                        <li>✅ Aumentar a taxa de retenção em <strong style="color: var(--accent-cyan);">25%</strong> nos próximos 6 meses</li>
+                        <li>✅ Reduzir o CAC (Custo de Aquisição de Cliente) através de melhor segmentação</li>
+                        <li>✅ Aumentar o LTV médio em <strong style="color: var(--accent-cyan);">40%</strong></li>
+                        <li>✅ Criar campanhas personalizadas com ROI <strong style="color: var(--accent-cyan);">3x maior</strong></li>
+                    </ul>
+                </div>
+
+                <div class="business-section">
+                    <h3><i class="ph ph-rocket-launch"></i> Próximos Passos</h3>
+                    <p>
+                        Navegue pelas abas <span class="highlight">Cohort</span>, 
+                        <span class="highlight">Segmentação RFM</span> e 
+                        <span class="highlight">Descritiva</span> para explorar os dados 
+                        e insights que guiarão nossas decisões estratégicas.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 2: Cohort Analysis -->
+        <div id="cohort" class="page">
+            <div class="page-header">
+                <h2>📈 Análise de Cohort</h2>
+                <p>Retenção de clientes ao longo do tempo</p>
+            </div>
+            
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-label">Taxa Retenção M1</div>
+                    <div class="kpi-value">9.5%</div>
+                    <div class="kpi-subtitle">Média do primeiro mês</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Taxa Retenção M6</div>
+                    <div class="kpi-value">3.2%</div>
+                    <div class="kpi-subtitle">Média do sexto mês</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Taxa Retenção M12</div>
+                    <div class="kpi-value">0.8%</div>
+                    <div class="kpi-subtitle">Média do décimo segundo mês</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Melhor Cohort</div>
+                    <div class="kpi-value">2014-11</div>
+                    <div class="kpi-subtitle">24% retenção em M1</div>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <div class="card-title">Mapa de Calor - Retenção por Cohort</div>
+                <div id="cohortHeatmap"></div>
+            </div>
+        </div>
+
+        <!-- Page 3: RFM Segmentation -->
+        <div id="rfm" class="page">
+            <div class="page-header">
+                <h2>👥 Segmentação RFM</h2>
+                <p>Análise de Recência, Frequência e Monetização</p>
+            </div>
+            
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-label">Recência Média</div>
+                    <div class="kpi-value">145</div>
+                    <div class="kpi-subtitle">dias desde última compra</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Frequência Média</div>
+                    <div class="kpi-value">3.2</div>
+                    <div class="kpi-subtitle">compras por cliente</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Monetização Média</div>
+                    <div class="kpi-value">$1,247</div>
+                    <div class="kpi-subtitle">valor total por cliente</div>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <div class="card-title">Distribuição de Clientes por Segmento</div>
+                <div id="rfmTreemap"></div>
+            </div>
+        </div>
+
+        <!-- Page 4: Descriptive Analysis -->
+        <div id="descritiva" class="page">
+            <div class="page-header">
+                <h2>📊 Análise Descritiva</h2>
+                <p>Produtos e vendas em detalhes</p>
+            </div>
+            
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-label">Total de Vendas</div>
+                    <div class="kpi-value">$2.3M</div>
+                    <div class="kpi-subtitle">receita total</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Total de Transações</div>
+                    <div class="kpi-value">9,426</div>
+                    <div class="kpi-subtitle">pedidos realizados</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Ticket Médio</div>
+                    <div class="kpi-value">$244</div>
+                    <div class="kpi-subtitle">valor médio por pedido</div>
+                </div>
+            </div>
+            
+            <div class="grid-2">
+                <div class="chart-container">
+                    <div class="card-title">Top 10 Produtos por Vendas</div>
+                    <div id="topProductsChart"></div>
+                </div>
+                
+                <div class="chart-container">
+                    <div class="card-title">Vendas por Categoria</div>
+                    <div id="categoryDonutChart"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript Application Entry Point -->
+    <script type="module" src="assets/js/index.js"></script>
+</body>
+</html>

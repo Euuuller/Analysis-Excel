@@ -1,0 +1,51 @@
+/**
+ * Main CSS Entry Point
+ * Imports all CSS modules in the correct order following ITCSS methodology
+ * 
+ * Layer Order:
+ * 1. Base - Variables, resets, typography
+ * 2. Layout - Grid systems, structural layout
+ * 3. Components - Reusable UI components
+ * 4. Pages - Page-specific styles
+ * 5. Utilities - Helper classes and responsive design
+ */
+
+/* ========== BASE LAYER ========== */
+@import url('./base/_variables.css');
+@import url('./base/_reset.css');
+@import url('./base/_typography.css');
+
+/* ========== LAYOUT LAYER ========== */
+@import url('./layout/_grid.css');
+@import url('./layout/_sidebar.css');
+@import url('./layout/_main.css');
+
+/* ========== COMPONENTS LAYER ========== */
+@import url('./components/_cards.css');
+@import url('./components/_navigation.css');
+
+/* ========== PAGES LAYER ========== */
+@import url('./pages/_business.css');
+
+/* ========== UTILITIES LAYER ========== */
+@import url('./utilities/_animations.css');
+@import url('./utilities/_responsive.css');
+
+/* ========== CUSTOM SCROLLBAR ========== */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-accent-cyan);
+    border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-accent-purple);
+}

@@ -1,0 +1,100 @@
+/* Responsive Design */
+
+@media (max-width: 1024px) {
+    .grid-2 {
+        grid-template-columns: 1fr;
+    }
+    
+    .kpi-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    /* Sidebar */
+    .sidebar {
+        width: 80px;
+    }
+    
+    .sidebar .logo h1,
+    .sidebar .logo p,
+    .nav-item span {
+        display: none;
+    }
+    
+    .nav-item {
+        justify-content: center;
+        padding: var(--spacing-md);
+    }
+    
+    /* Main Content */
+    .main-content {
+        margin-left: 80px;
+        padding: var(--spacing-md);
+    }
+    
+    /* Page Header */
+    .page-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    /* Grid Layouts */
+    .grid-2 {
+        grid-template-columns: 1fr;
+    }
+    
+    .kpi-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Business Content */
+    .business-content {
+        max-width: 100%;
+    }
+    
+    .business-section {
+        padding: var(--spacing-lg);
+    }
+    
+    .business-section h3 {
+        font-size: 1.25rem;
+    }
+    
+    .business-section p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Main Content */
+    .main-content {
+        padding: var(--spacing-sm);
+    }
+    
+    /* KPI Cards */
+    .kpi-value {
+        font-size: 1.5rem;
+    }
+    
+    /* Page Header */
+    .page-header h2 {
+        font-size: 1.25rem;
+    }
+    
+    .page-header p {
+        font-size: 0.875rem;
+    }
+    
+    /* Business Section */
+    .business-section {
+        padding: var(--spacing-md);
+    }
+    
+    .business-section h3 {
+        font-size: 1.125rem;
+    }
+    
+    .business-section p {
+        font-size: 0.9375rem;
+    }
+}
