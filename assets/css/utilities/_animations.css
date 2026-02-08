@@ -1,0 +1,77 @@
+/**
+ * Animations
+ * Reusable animations and transitions
+ */
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Slide In From Left */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Slide In From Right */
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Glow Animation */
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(6, 182, 212, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(6, 182, 212, 0.8);
+    }
+}
+
+/* Utility Classes */
+.animate-fade-in {
+    animation: fadeIn var(--transition-slow);
+}
+
+.animate-slide-in-left {
+    animation: slideInLeft var(--transition-normal);
+}
+
+.animate-slide-in-right {
+    animation: slideInRight var(--transition-normal);
+}
+
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}

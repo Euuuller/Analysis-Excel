@@ -1,0 +1,116 @@
+/**
+ * Responsive Design
+ * Media queries and responsive utilities
+ */
+
+/* Tablet (1024px and below) */
+@media (max-width: 1024px) {
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+        grid-template-columns: 1fr;
+    }
+    
+    .kpi-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+/* Mobile (768px and below) */
+@media (max-width: 768px) {
+    /* Sidebar */
+    .sidebar {
+        width: var(--sidebar-collapsed-width);
+    }
+    
+    .sidebar .logo h1,
+    .sidebar .logo p,
+    .nav-item span {
+        display: none;
+    }
+    
+    .nav-item {
+        justify-content: center;
+        padding: var(--space-md);
+    }
+    
+    /* Main Content */
+    .main-content {
+        margin-left: var(--sidebar-collapsed-width);
+        padding: var(--space-md);
+    }
+    
+    /* Page Header */
+    .page-header h2 {
+        font-size: var(--font-size-2xl);
+    }
+    
+    /* Grid */
+    .grid-2,
+    .grid-3,
+    .grid-4,
+    .kpi-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Business Content */
+    .business-content {
+        max-width: 100%;
+    }
+    
+    .business-section {
+        padding: var(--space-lg);
+    }
+    
+    .business-section h3 {
+        font-size: var(--font-size-xl);
+    }
+    
+    .business-section p {
+        font-size: var(--font-size-base);
+    }
+}
+
+/* Small Mobile (480px and below) */
+@media (max-width: 480px) {
+    .main-content {
+        padding: var(--space-sm);
+    }
+    
+    .kpi-value {
+        font-size: var(--font-size-2xl);
+    }
+    
+    .page-header h2 {
+        font-size: var(--font-size-xl);
+    }
+    
+    .page-header p {
+        font-size: var(--font-size-sm);
+    }
+    
+    .business-section {
+        padding: var(--space-md);
+    }
+    
+    .business-section h3 {
+        font-size: var(--font-size-lg);
+    }
+    
+    .business-section p {
+        font-size: var(--font-size-sm);
+    }
+}
+
+/* Utility Classes */
+.hide-mobile {
+    @media (max-width: 768px) {
+        display: none !important;
+    }
+}
+
+.hide-desktop {
+    @media (min-width: 769px) {
+        display: none !important;
+    }
+}
